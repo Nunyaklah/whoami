@@ -1,6 +1,6 @@
 <template>
   <div class="home font-poppins bg-background-color h-screen">
-    <div class="grid grid-cols-2 m-auto content-center gap-3 p-10 items-center">
+    <div class="grid grid-cols-2 m-auto content-center gap-3 p-14 items-center">
       <div class="">
         <div class="">
           <p class="mb-2">- Get to know yourself</p>
@@ -18,16 +18,16 @@
           </p>
         </div>
         <div class="mt-8">
-          <button
-            class="bg-white text-black font-semibold py-4 px-10 rounded"
-          >
-           How it Works 
+          <button class="bg-white text-black font-semibold py-4 px-10 rounded">
+            How it Works
           </button>
-           <button
-            class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
-          >
-            Start Personality Test !
-          </button>
+          <router-link to="/personality">
+            <button
+              class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+            >
+              Start Personality Test !
+            </button>
+          </router-link>
         </div>
       </div>
       <div>
