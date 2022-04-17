@@ -68,7 +68,7 @@
             @click.prevent="
               calculatePoints();
               postPoints();
-              isLoading = true
+              isLoading = true;
             "
             v-if="index == 4"
           >
@@ -137,7 +137,7 @@ export default {
       });
     },
     postPoints() {
-      const url = `http://localhost:8000/api/v1/submit?point=${parseInt(
+      const url = `${process.env.VUE_APP_BASE_URL}/submit?point=${parseInt(
         this.totalPoints
       )}`;
       axios
@@ -145,7 +145,9 @@ export default {
         .then((res) => {
           // eslint-disable-line no-unused-vars
           console.log(res);
-          this.$router.push(`/results/${JSON.stringify(res.data)}`);
+          setTimeout(() => {
+            this.$router.push(`/results/${JSON.stringify(res.data)}`);
+          }, 3000);
         })
         .catch((err) => {
           // eslint-disable-line no-unused-vars

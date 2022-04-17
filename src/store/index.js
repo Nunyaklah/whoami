@@ -14,7 +14,7 @@ export default createStore({
     getQuestions({commit}){
       return new Promise((resolve, reject) => {
         axios({
-          url: `http://localhost:8000/api/v1/questions`,
+          url: `${process.env.VUE_APP_BASE_URL}/questions`,
           method: 'GET'
         })
         .then((resp)=>{
