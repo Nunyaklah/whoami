@@ -1,11 +1,13 @@
 <template>
   <div
-    class="font-poppins bg-background-color h-screen text-center p-10 m-auto"
+    class="font-poppins bg-background-color h-screen w-screen text-center p-10 m-auto"
   >
-    <div class="m-auto bg-white h-5/6 p-10 rounded-2xl">
+    <div class="m-auto bg-white p-10 rounded-2xl">
       <form>
         <div>
-          <p class="font-bold text-orange-300">Question 1 / 5</p>
+          <p class="font-bold text-xl text-yellow-400">
+            Question {{ index + 1 }} / 5
+          </p>
           <h3 class="font-bold text-2xl mt-4">
             {{ question.question }}
           </h3>
@@ -13,38 +15,35 @@
         <div class="mt-10">
           Pick an Answer !
 
-          <div class="w-5/6 m-auto pt-10">
-            <table class="w-full whitespace-nowrap">
-              <tbody>
-                <tr
-                  tabindex="0"
-                  class="focus:outline-none h-16 border border-gray-200 dark:border-gray-600 rounded"
-                  :class="{ 'bg-green-100': selected }"
-                  v-for="answer in question.answers"
-                  :key="answer.id"
-                  @click="selectedAnswer(answer.point)"
+          <div class="w-full m-auto pt-10">
+            <div
+              class="w-full whitespace-nowrap h-16 border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
+              :class="{ 'bg-green-50 border-green-300': answer.selected }"
+              v-for="(answer, index) in question.answers"
+              :key="answer.id"
+              @click="
+                selectedAnswer(answer.point);
+                markAsSelected(index);
+              "
+            >
+              <div class="ml-5">
+                <div
+                  class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative"
+                  :class="{
+                    'bg-green-300': answer.selected,
+                    'text-white': answer.selected,
+                  }"
                 >
-                  <td>
-                    <div class="ml-5">
-                      <div
-                        class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative"
-                      >
-                        <p>{{ answer.option }}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="">
-                    <div class="flex items-center pl-5">
-                      <p
-                        class="text-base font-medium leading-none text-gray-700 dark:text-white mr-2"
-                      >
-                        {{ answer.answer }}
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  <p>{{ answer.option }}</p>
+                </div>
+              </div>
+
+              <div class="flex pl-5 break-words">
+                <p class="font-medium text-gray-700 mr-2">
+                  {{ answer.answer }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -63,11 +62,13 @@
           >
             Next
           </button>
+
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
             @click.prevent="
               calculatePoints();
               postPoints();
+              isLoading = true
             "
             v-if="index == 4"
           >
@@ -75,12 +76,22 @@
           </button>
         </div>
       </form>
+      <div class="vld-parent">
+        <loading
+          v-model:active="isLoading"
+          :can-cancel="true"
+          :on-cancel="onCancel"
+          :is-full-page="fullPage"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   data() {
@@ -91,7 +102,12 @@ export default {
       pointsArray: [0, 0, 0, 0, 0],
       totalPoints: 0,
       selected: false,
+      isLoading: false,
+      fullPage: true,
     };
+  },
+  components: {
+    Loading,
   },
   methods: {
     dynamicQuestions() {
@@ -129,12 +145,19 @@ export default {
         .then((res) => {
           // eslint-disable-line no-unused-vars
           console.log(res);
-          this.$router.push(`/results/${JSON.stringify(res.data) }`)
+          this.$router.push(`/results/${JSON.stringify(res.data)}`);
         })
         .catch((err) => {
           // eslint-disable-line no-unused-vars
           console.log(err);
         });
+    },
+    markAsSelected(index) {
+      this.question.answers[index].selected = true;
+    },
+
+    unmarkSeclected() {
+      this.question.answers[this.previouslySelectedIndex].selected = false;
     },
   },
   mounted() {

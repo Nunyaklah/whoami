@@ -1,24 +1,24 @@
 <template>
   <div class="home font-poppins bg-background-color h-screen">
-    <div class="grid grid-cols-2 m-auto content-center gap-3 p-14 items-center">
-      <div class="">
-        <div class="">
+    <div class="flex flex-col md:flex-row lg:flex-row justify-center items-center pt-40 p-8">
+      <div class="w-full  md:w-2/5 lg:2/5 p-4">
+        <div class="text-center md:text-left lg:text-left ">
           <p class="mb-2">- Get to know yourself</p>
-          <h1 class="text-6xl font-extrabold">
+          <h1 class="text-6xl font-extrabold leading-normal inline">
             Easy, Pezy <br />
             Way To Check <br />
             Your Personality
           </h1>
         </div>
-        <div>
-          <p class="mt-6 w-7/12">
+        <div class="text-center md:text-left lg:text-left">
+          <p class="mt-6 w-full md:w-7/12 lg:w-7/12">
             We all have a personality trait, use this application to find out
             where you fit. This can help you in your relationships, career and
             your entire life
           </p>
         </div>
-        <div class="mt-8">
-          <button class="bg-white text-black font-semibold py-4 px-10 rounded">
+        <div class="mt-8  text-center md:text-left lg:text-left">
+          <button class="bg-white text-black font-semibold py-4 px-10 rounded mb-4">
             How it Works
           </button>
           <router-link to="/personality">
@@ -30,7 +30,7 @@
           </router-link>
         </div>
       </div>
-      <div>
+      <div class="p-4">
         <img src="@/assets/images/happy-woman.png" alt="" />
       </div>
     </div>
