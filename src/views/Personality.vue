@@ -1,8 +1,8 @@
 <template>
   <div
-    class="font-poppins container overflow-x-hidden bg-background-color h-screen w-screen text-center p-4 m-auto"
+    class="font-poppins container overflow-x-hidden bg-background-color h-screen w-screen text-center p-4 max-w-none"
   >
-    <div class="m-auto bg-white p-4 md:p-10 rounded-2xl">
+    <div class="m-auto bg-white p-4 md:p-20 lg:p-20 rounded-2xl">
       <form>
         <div>
           <p class="font-bold text-xl text-yellow-400">
@@ -14,9 +14,11 @@
         </div>
         <div class="mt-10">
           Pick an Answer !
-            <div class="w-full m-auto pt-10">
+
+          <FadeInOut entry="left" exit="left" :duration="600" mode="out-in">
+            <div class="w-full m-auto pt-10" v-if="index == 0 || 1">
               <div
-                class="w-full md:w-3/5 m-auto  h-full p-4 md:h-16  border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
+                class="w-full md:w-3/5 m-auto h-full p-4 md:h-16 border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
                 :class="{ 'bg-green-50 border-green-300': answer.selected }"
                 v-for="(answer, index) in question.answers"
                 :key="answer.id"
@@ -37,14 +39,14 @@
                   </div>
                 </div>
 
-                <div class="pl-5  ">
+                <div class="pl-5">
                   <p class="font-medium text-gray-700 mr-2">
                     {{ answer.answer }}
                   </p>
                 </div>
               </div>
             </div>
-         
+          </FadeInOut>
         </div>
 
         <div class="mt-8">
@@ -91,6 +93,7 @@
 <script>
 import axios from "axios";
 import Loading from "vue-loading-overlay";
+import { FadeInOut } from "vue3-transitions";
 
 export default {
   data() {
@@ -107,6 +110,7 @@ export default {
   },
   components: {
     Loading,
+    FadeInOut,
   },
   methods: {
     dynamicQuestions() {
@@ -164,22 +168,3 @@ export default {
 };
 </script>
 
-<style scoped>
-/*
-  Enter and leave animations can use different
-  durations and timing functions.
-*/
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
-}
-</style>

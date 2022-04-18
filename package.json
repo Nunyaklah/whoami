@@ -19,6 +19,7 @@
     "vue-loading-overlay": "^5.0.3",
     "vue-router": "^4.0.0-0",
     "vue-spinners": "^1.0.2",
+    "vue3-transitions": "^1.0.0",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
