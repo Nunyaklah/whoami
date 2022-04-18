@@ -1,56 +1,55 @@
 <template>
   <div
-    class="font-poppins bg-background-color h-screen w-screen text-center p-10 m-auto"
+    class="font-poppins container overflow-x-hidden bg-background-color h-screen w-screen text-center p-4 m-auto"
   >
-    <div class="m-auto bg-white p-10 rounded-2xl">
+    <div class="m-auto bg-white p-4 md:p-10 rounded-2xl">
       <form>
         <div>
           <p class="font-bold text-xl text-yellow-400">
             Question {{ index + 1 }} / 5
           </p>
-          <h3 class="font-bold text-2xl mt-4">
+          <h3 class="font-bold text-2xl mt-4 w-full md:w-3/5 m-auto">
             {{ question.question }}
           </h3>
         </div>
         <div class="mt-10">
           Pick an Answer !
-        <Transition name="slide-fade">
-          <div class="w-full m-auto pt-10">
-            <div
-              class="w-full whitespace-nowrap h-16 border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
-              :class="{ 'bg-green-50 border-green-300': answer.selected }"
-              v-for="(answer, index) in question.answers"
-              :key="answer.id"
-              @click="
-                selectedAnswer(answer.point);
-                markAsSelected(index);
-              "
-            >
-              <div class="ml-5">
-                <div
-                  class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative"
-                  :class="{
-                    'bg-green-300': answer.selected,
-                    'text-white': answer.selected,
-                  }"
-                >
-                  <p>{{ answer.option }}</p>
+            <div class="w-full m-auto pt-10">
+              <div
+                class="w-full md:w-3/5 m-auto  h-full p-4 md:h-16  border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
+                :class="{ 'bg-green-50 border-green-300': answer.selected }"
+                v-for="(answer, index) in question.answers"
+                :key="answer.id"
+                @click="
+                  selectedAnswer(answer.point);
+                  markAsSelected(index);
+                "
+              >
+                <div class="ml-5">
+                  <div
+                    class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center"
+                    :class="{
+                      'bg-green-300': answer.selected,
+                      'text-white': answer.selected,
+                    }"
+                  >
+                    <p>{{ answer.option }}</p>
+                  </div>
+                </div>
+
+                <div class="pl-5  ">
+                  <p class="font-medium text-gray-700 mr-2">
+                    {{ answer.answer }}
+                  </p>
                 </div>
               </div>
-
-              <div class="flex pl-5 break-words">
-                <p class="font-medium text-gray-700 mr-2">
-                  {{ answer.answer }}
-                </p>
-              </div>
             </div>
-          </div>
-        </Transition>  
+         
         </div>
 
         <div class="mt-8">
           <button
-            class="bg-gray-200 text-black font-semibold py-4 px-10 rounded"
+            class="bg-gray-200 text-black font-semibold py-4 px-10 rounded mb-3"
             @click.prevent="decreaseIndex()"
           >
             Previous
@@ -92,7 +91,6 @@
 <script>
 import axios from "axios";
 import Loading from "vue-loading-overlay";
-
 
 export default {
   data() {

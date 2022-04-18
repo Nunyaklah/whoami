@@ -1,5 +1,5 @@
 <template>
-  <div class="home font-poppins bg-background-color h-screen">
+  <div class="home overflow-hidden font-poppins bg-background-color h-screen">
     <div
       class="flex flex-col md:flex-row lg:flex-row justify-center items-center pt-40 p-8"
     >
@@ -7,13 +7,11 @@
         <div class="text-center md:text-left lg:text-left">
           <p class="mb-2">- Get to know yourself</p>
 
-          <h1 class="text-6xl font-extrabold relative  leading-normal z-50">
+          <h1 class="text-4xl md:text-6xl font-extrabold relative  leading-normal z-50">
             Easy, Pezy <br />
             Way To Check <br />
             Your Personality
-            <span
-              class="absolute w-80 h-5 bg-line-color bottom-3 right-20 -z-0 opacity-90 hidden md:block"
-            ></span>
+            
           </h1>
         </div>
 
