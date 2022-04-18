@@ -1,5 +1,5 @@
 <template>
-  <div class="home overflow-hidden font-poppins bg-background-color h-screen">
+  <div class="home  overflow-x-hidden font-poppins bg-background-color h-screen">
     <div
       class="flex flex-col md:flex-row lg:flex-row justify-center items-center pt-40 p-8"
     >
