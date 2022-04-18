@@ -14,7 +14,7 @@
         </div>
         <div class="mt-10">
           Pick an Answer !
-
+        <Transition name="slide-fade">
           <div class="w-full m-auto pt-10">
             <div
               class="w-full whitespace-nowrap h-16 border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
@@ -45,6 +45,7 @@
               </div>
             </div>
           </div>
+        </Transition>  
         </div>
 
         <div class="mt-8">
@@ -157,10 +158,6 @@ export default {
     markAsSelected(index) {
       this.question.answers[index].selected = true;
     },
-
-    unmarkSeclected() {
-      this.question.answers[this.previouslySelectedIndex].selected = false;
-    },
   },
   mounted() {
     this.$store.dispatch("getQuestions");
@@ -168,3 +165,23 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+</style>

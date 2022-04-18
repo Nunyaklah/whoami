@@ -4,19 +4,19 @@
       class="flex flex-col md:flex-row lg:flex-row justify-center items-center pt-40 p-8"
     >
       <div class="w-full md:w-2/5 lg:2/5 p-4">
-        <div class="text-center md:text-left lg:text-left relative">
-          
+        <div class="text-center md:text-left lg:text-left">
           <p class="mb-2">- Get to know yourself</p>
-          
-          <h1 class="text-6xl font-extrabold leading-normal z-0">
+
+          <h1 class="text-6xl font-extrabold relative  leading-normal z-50">
             Easy, Pezy <br />
             Way To Check <br />
             Your Personality
-    
+            <span
+              class="absolute w-80 h-5 bg-line-color bottom-3 right-20 -z-0 opacity-90 hidden md:block"
+            ></span>
           </h1>
-         <span class="absolute w-80 h-5 bg-line-color bottom-4 right-20 z-10"></span>
         </div>
-        
+
         <div class="text-center md:text-left lg:text-left">
           <p class="mt-6 w-full md:w-7/12 lg:w-7/12">
             We all have a personality trait, use this application to find out
@@ -41,16 +41,16 @@
       </div>
       <div class="p-4 relative">
         <img src="@/assets/images/happy-woman.png" alt="" />
-         <div
-              class="bg-black text-white font-semibold py-8 px-10 rounded  absolute bottom-0 right-20"
-            >
-              Everyone is special 😎 😘
-            </div>
-          <div
-              class="bg-line-color text-white font-semibold px-5 py-5  rounded-full  absolute top-0 right-10"
-            >
-               Go you!
-            </div>  
+        <div
+          class="bg-black text-white font-semibold py-8 px-10 rounded absolute bottom-0 right-20"
+        >
+          Everyone is special 😎 😘
+        </div>
+        <div
+          class="bg-line-color text-white font-semibold px-5 py-5 rounded-full absolute top-0 right-10"
+        >
+          Go you!
+        </div>
       </div>
     </div>
   </div>
