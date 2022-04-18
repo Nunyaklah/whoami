@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1650242380430" clover="3.2.0">
+  <project timestamp="1650242380430" name="All files">
+    <metrics statements="32" coveredstatements="11" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="2" elements="52" coveredelements="13" complexity="0" loc="32" ncloc="32" packages="3" files="7" classes="7"/>
+    <package name="assets.images">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="extrovert.jpg" path="/Users/nunyaklah/Documents/Teamway/personality/src/assets/images/extrovert.jpg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="happy-woman.png" path="/Users/nunyaklah/Documents/Teamway/personality/src/assets/images/happy-woman.png">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="introvert.jpg" path="/Users/nunyaklah/Documents/Teamway/personality/src/assets/images/introvert.jpg">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="HelloWorld.vue" path="/Users/nunyaklah/Documents/Teamway/personality/src/components/HelloWorld.vue">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="views">
+      <metrics statements="28" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="2"/>
+      <file name="Home.vue" path="/Users/nunyaklah/Documents/Teamway/personality/src/views/Home.vue">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+      </file>
+      <file name="Personality.vue" path="/Users/nunyaklah/Documents/Teamway/personality/src/views/Personality.vue">
+        <metrics statements="24" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="14" coveredmethods="2"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="117" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
+        <line num="123" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="154" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="166" count="1" type="stmt"/>
+        <line num="167" count="0" type="stmt"/>
+      </file>
+      <file name="Result.vue" path="/Users/nunyaklah/Documents/Teamway/personality/src/views/Result.vue">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
