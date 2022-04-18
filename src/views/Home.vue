@@ -1,5 +1,5 @@
 <template>
-  <div class="home  overflow-x-hidden font-poppins bg-background-color h-screen">
+  <div class="home overflow-x-hidden font-poppins bg-background-color h-screen">
     <div
       class="flex flex-col md:flex-row lg:flex-row justify-center items-center pt-40 p-8"
     >
@@ -7,11 +7,10 @@
         <div class="text-center md:text-left lg:text-left">
           <p class="mb-2">- Get to know yourself</p>
 
-          <h1 class="text-4xl md:text-6xl font-extrabold relative  leading-normal z-50">
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-normal z-50">
             Easy, Pezy <br />
             Way To Check <br />
             Your Personality
-            
           </h1>
         </div>
 
@@ -25,6 +24,7 @@
         <div class="mt-8 text-center md:text-left lg:text-left">
           <button
             class="bg-white text-black font-semibold py-4 px-10 rounded mb-4"
+            @click="showModal()"
           >
             How it Works
           </button>
@@ -50,15 +50,28 @@
           Go you!
         </div>
       </div>
+      <Modal />
     </div>
   </div>
 </template>
 
 <script>
+import Modal from "../components/Modal.vue";
+
 export default {
   name: "Home",
   data() {
     return {};
+  },
+  components: {
+    Modal,
+  },
+  methods: {
+    showModal() {
+      let m = document.getElementById("modal");
+      m.classList.remove("hidden");
+      m.classList.add("inline-block");
+    },
   },
 };
 </script>

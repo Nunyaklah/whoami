@@ -15,7 +15,7 @@
         <div class="mt-10">
           Pick an Answer !
 
-         <FadeInOut entry="left" exit="left" :duration="600" mode="out-in">
+     
             <div class="w-full m-auto pt-10">
              
               <div
@@ -48,7 +48,7 @@
               </div>
             
             </div>
-            </FadeInOut>
+           
         </div>
 
         <div class="mt-8">
@@ -95,7 +95,7 @@
 <script>
 import axios from "axios";
 import Loading from "vue-loading-overlay";
-import { FadeInOut } from "vue3-transitions";
+
 
 export default {
   data() {
@@ -112,7 +112,7 @@ export default {
   },
   components: {
     Loading,
-    FadeInOut,
+   
   },
   methods: {
     dynamicQuestions() {
