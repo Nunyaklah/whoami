@@ -15,10 +15,11 @@
         <div class="mt-10">
           Pick an Answer !
 
-          <FadeInOut entry="left" exit="left" :duration="600" mode="out-in">
-            <div class="w-full m-auto pt-10" v-if="index == 0 || 1">
+         <FadeInOut entry="left" exit="left" :duration="600" mode="out-in">
+            <div class="w-full m-auto pt-10">
+             
               <div
-                class="w-full md:w-3/5 m-auto h-full p-4 md:h-16 border container border-gray-200 rounded mb-4 flex items-center flex-wrap"
+                class="w-full md:w-3/5 m-auto h-full p-4 md:h-16 border container border-gray-200 rounded mb-4 flex items-center "
                 :class="{ 'bg-green-50 border-green-300': answer.selected }"
                 v-for="(answer, index) in question.answers"
                 :key="answer.id"
@@ -26,10 +27,10 @@
                   selectedAnswer(answer.point);
                   markAsSelected(index);
                 "
-              >
+              >  
                 <div class="ml-5">
                   <div
-                    class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center"
+                    class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex  justify-center "
                     :class="{
                       'bg-green-300': answer.selected,
                       'text-white': answer.selected,
@@ -45,8 +46,9 @@
                   </p>
                 </div>
               </div>
+            
             </div>
-          </FadeInOut>
+            </FadeInOut>
         </div>
 
         <div class="mt-8">
