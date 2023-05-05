@@ -18,19 +18,29 @@
           <div class="w-full m-auto pt-10">
             <div
               class="w-full md:w-3/5 m-auto h-full p-4 md:h-16 border container border-gray-200 rounded mb-4 flex items-center"
+              :class="{ 'bg-green-50 border-green-300': answer.selected}"
+              v-for="(answer, index) in question.answers"
+              :key="answer.id"
+              @click="
+                questionsStore.selectedAnswer(answer.point);
+                questionsStore.markAsSelected(index);
+              "
             >
               <div class="ml-5">
                 <div
-                  class="bg-gray-200 dark:bg-gray-800 rounded-sm w-5 h-5 flex justify-center"
-                  
+                  class="bg-gray-200  rounded-sm w-5 h-5 flex justify-center"
+                  :class="{
+                    'bg-green-300': answer.selected,
+                    'text-white': answer.selected,
+                  }"
                 >
-                  <p>A</p>
+                  <p>{{ answer.option }}</p>
                 </div>
               </div>
 
               <div class="pl-5">
                 <p class="font-medium text-gray-700 mr-2">
-                  Think its more important to give them some of your time; work can wait
+                  {{ answer.answer }}
                 </p>
               </div>
             </div>
@@ -40,13 +50,15 @@
         <div class="mt-8">
           <button
             class="bg-gray-200 text-black font-semibold py-4 px-10 rounded mb-3"
-           
+            @click.prevent="questionsStore.decreaseIndex()"
           >
             Previous
           </button>
 
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+            @click.prevent="questionsStore.increaseIndex()"
+            v-if="index != 4"
           >
             Next
           </button>
@@ -85,10 +97,6 @@ const {question, index} = storeToRefs(questionsStore)
 
 //fetch the questions from api
 questionsStore.getQuestions()
-
-
-
-
 
 
 </script>
