@@ -65,35 +65,29 @@
 
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+            @click.prevent="
+              questionsStore.calculatePoints();
+            "
+            v-if="index == 4"
           >
             Submit
           </button>
         </div>
       </form>
-      <!-- <div class="vld-parent">
-        <loading
-          v-model:active="isLoading"
-          :can-cancel="true"
-          :on-cancel="onCancel"
-          :is-full-page="fullPage"
-        />
-      </div> -->
     </div>
   </div>
 </template>
 
 <script setup>
-// import Loading from "vue-loading-overlay";
 
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
 import {usePersonalityStore} from '../stores/personality'
 
 // create store
 const questionsStore = usePersonalityStore()
 
 // creating store refs
-const {question, index} = storeToRefs(questionsStore)
+const {question, index ,loading, fullPage} = storeToRefs(questionsStore)
 
 //fetch the questions from api
 questionsStore.getQuestions()

@@ -140,5 +140,17 @@
                 }
             ]
         }
+    ],
+    "results": [
+        {
+            "id": 1,
+            "personality": "Hurray ! You are an Introvert",
+            "personalityDetails": "An introvert is a person with qualities of a personality type known as introversion, which means that they feel more comfortable focusing on their inner thoughts and ideas, rather than what's happening externally. They enjoy spending time with just one or two people, rather than large groups or crowds.When you hear the word introvert, you might think of someone who's shy or quiet and prefers to be alone. While that may be true for some introverts, there's much more to this personality type. Whether you're an introvert or an extrovert all depends on how you process the world around you."
+        },
+        {
+            "id": 2,
+            "personality": "Hurray ! You are an Extrovert",
+            "personalityDetails": "The term extrovert describes one aspect of a personality dimension that is characterized by an outgoing and expressive pattern of behavior and social interaction. Extroverts tend to be gregarious, assertive, warm, active, excitement-seeking, and positive. On the positive side, extroverts are often described as talkative, sociable, action-oriented, enthusiastic, friendly, and outgoing. On the negative side, they are sometimes described as attention-seeking, easily distracted, and unable to spend time alone. Extroverts are also more likely to engage in risk-taking behaviors, including risky health behaviors."
+        }
     ]
 }

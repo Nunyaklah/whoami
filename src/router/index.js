@@ -15,9 +15,14 @@ const router = createRouter({
       component: () => import('../views/Personality.vue')
     },
     {
-      path: '/results/:result',
+      path: '/results',
       name: 'Results',
       component: () => import('../views/Result.vue')
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/Login.vue')
     }
   ]
 })
