@@ -1,0 +1,144 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "token": "testtoken123456789",
+            "firstname": "Nunya",
+            "lastname": "Klah",
+            "email": "nunyaklah@gmail.com",
+            "password": "testpassword"
+        }
+    ],
+    "questions": [
+        {
+            "id": "a5da0cca-6fa0-4111-a59a-f3ce71a90f90",
+            "question": "You're really busy at work and a colleague is telling you their life story and personal woes. You:",
+            "answers": [
+                {
+                    "option": "A",
+                    "answer": "Dont dare to interrupt them",
+                    "point": 2
+                },
+                {
+                    "option": "B",
+                    "answer": "Think its more important to give them some of your time; work can wait",
+                    "point": 2
+                },
+                {
+                    "option": "C",
+                    "answer": "Listen, but with only with half an ear",
+                    "point": 1
+                },
+                {
+                    "option": "D",
+                    "answer": "Interrupt and explain that you are really busy at the moment",
+                    "point": 0.5
+                }
+            ]
+        },
+        {
+            "id": "686b4413-8b30-4ae2-9b77-a2933f8f9228",
+            "question": "Youve been sitting in the doctors waiting room for more than 25 minutes. You:",
+            "answers": [
+                {
+                    "option": "A",
+                    "answer": "Look at your watch every two minutes",
+                    "point": 1
+                },
+                {
+                    "option": "B",
+                    "answer": "Bubble with inner anger, but keep quiet",
+                    "point": 1
+                },
+                {
+                    "option": "C",
+                    "answer": "Explain to other equally impatient people in the room that the doctor is always running late",
+                    "point": 2
+                },
+                {
+                    "option": "D",
+                    "answer": "Complain in a loud voice, while tapping your foot impatiently",
+                    "point": 1
+                }
+            ]
+        },
+        {
+            "id": "7b387e79-bcf7-41a0-8c8b-5071ab9cccb4",
+            "question": "Youre having an animated discussion with a colleague regarding a project that youre in charge of. You:",
+            "answers": [
+                {
+                    "option": "A",
+                    "answer": "Dont dare contradict them",
+                    "point": 0.5
+                },
+                {
+                    "option": "B",
+                    "answer": "Think that they are obviously right",
+                    "point": 1
+                },
+                {
+                    "option": "C",
+                    "answer": "Defend your own point of view, tooth and nail",
+                    "point": 0.5
+                },
+                {
+                    "option": "D",
+                    "answer": "Continuously interrupt your colleague",
+                    "point": 2
+                }
+            ]
+        },
+        {
+            "id": "6cc86341-9a72-46aa-bbe3-fa485e7dad4f",
+            "question": "You are taking part in a guided tour of a museum. You:",
+            "answers": [
+                {
+                    "option": "A",
+                    "answer": "Are a bit too far towards the back so dont really hear what the guide is saying",
+                    "point": 0.5
+                },
+                {
+                    "option": "B",
+                    "answer": "Follow the group without question",
+                    "point": 1
+                },
+                {
+                    "option": "C",
+                    "answer": "Make sure that everyone is able to hear properly",
+                    "point": 0.5
+                },
+                {
+                    "option": "D",
+                    "answer": "Are right up the front, adding your own comments in a loud voice",
+                    "point": 2
+                }
+            ]
+        },
+        {
+            "id": "fc542724-25c1-4760-90d9-012bc76765c0",
+            "question": "During dinner parties at your home, you have a hard time with people who:",
+            "answers": [
+                {
+                    "option": "A",
+                    "answer": "Ask you to tell a story in front of everyone else",
+                    "point": 0.5
+                },
+                {
+                    "option": "B",
+                    "answer": "Talk privately between themselves",
+                    "point": 1
+                },
+                {
+                    "option": "C",
+                    "answer": "Hang around you all evening",
+                    "point": 2
+                },
+                {
+                    "option": "D",
+                    "answer": "Always drag the conversation back to themselves",
+                    "point": 5
+                }
+            ]
+        }
+    ]
+}
