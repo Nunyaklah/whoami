@@ -1,8 +1,9 @@
 <template>
   <div
-    class="font-poppins container overflow-x-hidden bg-background-color h-screen w-screen text-center p-4 max-w-none"
+    class="font-poppins container overflow-x-hidden bg-background-color h-screen w-screen text-center pb-8 max-w-none"
   >
-    <div class="m-auto bg-white p-4 md:p-20 lg:p-20 rounded-2xl">
+    <Navbar />
+    <div class="m-auto bg-white p-4 md:p-20 lg:p-20 rounded-3xl mt-10 w-5/6">
       <form>
         <div>
           <p class="font-bold text-xl text-yellow-400">
@@ -18,7 +19,7 @@
           <div class="w-full m-auto pt-10">
             <div
               class="w-full md:w-3/5 m-auto h-full p-4 md:h-16 border container border-gray-200 rounded mb-4 flex items-center"
-              :class="{ 'bg-green-50 border-green-300': answer.selected}"
+              :class="{ 'bg-green-50 border-green-300': answer.selected }"
               v-for="(answer, index) in question.answers"
               :key="answer.id"
               @click="
@@ -28,7 +29,7 @@
             >
               <div class="ml-5">
                 <div
-                  class="bg-gray-200  rounded-sm w-5 h-5 flex justify-center"
+                  class="bg-gray-200 rounded-sm w-5 h-5 flex justify-center"
                   :class="{
                     'bg-green-300': answer.selected,
                     'text-white': answer.selected,
@@ -65,9 +66,7 @@
 
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
-            @click.prevent="
-              questionsStore.calculatePoints();
-            "
+            @click.prevent="questionsStore.calculatePoints()"
             v-if="index == 4"
           >
             Submit
@@ -79,19 +78,16 @@
 </template>
 
 <script setup>
-
 import { storeToRefs } from "pinia";
-import {usePersonalityStore} from '../stores/personality'
-
+import { usePersonalityStore } from "../stores/personality";
+import Navbar from "../components/Navbar.vue";
 
 // create store
-const questionsStore = usePersonalityStore()
+const questionsStore = usePersonalityStore();
 
 // creating store refs
-const {question, index ,loading, fullPage} = storeToRefs(questionsStore)
+const { question, index, loading, fullPage } = storeToRefs(questionsStore);
 
 //fetch the questions from api
-questionsStore.getQuestions()
-
-
+questionsStore.getQuestions();
 </script>

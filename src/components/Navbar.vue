@@ -15,21 +15,23 @@
         >
       </router-link>
       <div class="flex md:order-2">
-        <button
-            type="button"
-            class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-900 font-medium rounded-lg text-sm px-10 py-4 text-center mr-3 md:mr-0"
-            @click.prevent = "logout"
-            v-if="login"
-          >
-            Login 🥰🤩
-          </button>
+        
           <button
             type="button"
             class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-900 font-medium rounded-lg text-sm px-10 py-4 text-center mr-3 md:mr-0"
             @click.prevent = "logout"
-            v-else
+            v-if="loginStatus"
+            
           >
             Logout 🥲😭
+          </button>
+          <button
+            type="button"
+            class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-900 font-medium rounded-lg text-sm px-10 py-4 text-center mr-3 md:mr-0"
+            @click.prevent = "login"
+            v-else
+          >
+            Login 🥰🤩
           </button>
      
       </div>
@@ -39,12 +41,13 @@
 
 <script setup>
 import { useAuthStore } from "../stores/auth";
+import {ref} from "vue"
 import router from "../router/index"
 
 // create store
 const authStore = useAuthStore();
 
-let loginStatus = authStore.isLoggedIn
+let loginStatus = ref(authStore.isLoggedIn)
 
 function logout(){
     authStore.logout()

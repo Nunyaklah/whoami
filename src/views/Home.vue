@@ -64,9 +64,12 @@ import AuthModal from "../components/AuthModal.vue";
 import Navbar from "../components/Navbar.vue"
 import { useAuthStore } from "../stores/auth";
 import router from "../router/index"
+import {ref} from "vue"
 
 // create store
 const authStore = useAuthStore();
+
+let loginStatus = ref(authStore.isLoggedIn)
 
 // showModal removes hidden class from modal element and replace with inline-block.
 function showModal() {
@@ -82,8 +85,8 @@ function showAuthModal() {
 }
 
 function checkLoginStatus(){
-  console.log(authStore.isLoggedIn)
-  if(authStore.isLoggedIn){
+  console.log(loginStatus.value)
+  if(loginStatus.value){
     router.push("/personality")
     
   }else{
