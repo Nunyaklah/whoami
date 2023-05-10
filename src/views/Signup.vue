@@ -3,12 +3,13 @@
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >
-      <a
-        href="#"
+      <router-link
+        to="/"
         class="flex items-center mb-6 text-2xl font-bold text-gray-900"
       >
+      <img class="w-16 h-16 mr-2" src="../assets/images/logo.png" alt="logo">
         Personality Test
-      </a>
+  </router-link>
       <div
         class="w-full bg-line-color rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0"
       >
@@ -89,8 +90,8 @@
             </button>
             <p class="text-sm font-semibold text-gray-700">
               Already have an account?
-              <a href="/login" class="font-medium text-gray-900 hover:underline"
-                >Sign In</a
+              <router-link to="/login" class="font-medium text-gray-900 hover:underline"
+                >Sign In</router-link
               >
             </p>
           </form>

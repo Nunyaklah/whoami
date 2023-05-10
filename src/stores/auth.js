@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import router from "../router/index";
 
 export const useAuthStore = defineStore("authStore", {
   state: () => ({
@@ -14,7 +15,8 @@ export const useAuthStore = defineStore("authStore", {
           password,
         })
         .then(function (response) {
-            localStorage.setItem("token", response.data.accessToken);
+          localStorage.setItem("token", response.data.accessToken);
+          router.push("/");
         })
         .catch(function (error) {
           console.log(error);
@@ -30,13 +32,18 @@ export const useAuthStore = defineStore("authStore", {
         })
         .then(function (response) {
           console.log(response);
+          router.push("/login");
         })
         .catch(function (error) {
           console.log(error);
         });
     },
+    logout() {
+      this.token = null
+      window.localStorage.removeItem("token");
+    },
   },
   getters: {
-    isLoggedIn: (state) => !!state.token
+    isLoggedIn: (state) => !!state.token,
   },
 });

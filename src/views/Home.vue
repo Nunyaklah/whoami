@@ -1,5 +1,6 @@
 <template>
   <div class="home overflow-x-hidden font-poppins bg-background-color h-screen">
+    <Navbar/>
     <div
       class="flex flex-col md:flex-row lg:flex-row justify-center items-center pt-40 p-8"
     >
@@ -28,13 +29,14 @@
           >
             How it Works
           </button>
-          <router-link to="/personality">
+          
             <button
               class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+              @click="checkLoginStatus"
             >
               Start Personality Test !
             </button>
-          </router-link>
+         
         </div>
       </div>
       <div class="p-4 relative">
@@ -51,17 +53,41 @@
         </div>
       </div>
       <Modal />
+      <AuthModal />
     </div>
   </div>
 </template>
 
 <script setup>
 import Modal from "../components/Modal.vue";
+import AuthModal from "../components/AuthModal.vue";
+import Navbar from "../components/Navbar.vue"
+import { useAuthStore } from "../stores/auth";
+import router from "../router/index"
+
+// create store
+const authStore = useAuthStore();
 
 // showModal removes hidden class from modal element and replace with inline-block.
 function showModal() {
   let m = document.getElementById("modal");
   m.classList.remove("hidden");
   m.classList.add("inline-block");
+}
+
+function showAuthModal() {
+  let m = document.getElementById("authmodal");
+  m.classList.remove("hidden");
+  m.classList.add("inline-block");
+}
+
+function checkLoginStatus(){
+  console.log(authStore.isLoggedIn)
+  if(authStore.isLoggedIn){
+    router.push("/personality")
+    
+  }else{
+    showAuthModal()
+  }
 }
 </script>

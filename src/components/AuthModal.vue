@@ -1,6 +1,6 @@
 <template>
   <div
-    id="modal"
+    id="authmodal"
     class="fixed z-10 inset-0 overflow-y-auto hidden"
     :class="{ hidden: closeModal }"
   >
@@ -27,35 +27,41 @@
               class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10"
             >
               <!-- Heroicon name: outline/exclamation -->
-              😉
+              🌚
             </div>
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
               <h3
                 class="text-lg leading-6 font-medium text-gray-900"
                 id="modal-title"
               >
-                Personality Test
+                Login to have access!
               </h3>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
-                  Hit the start personality test button. You will be presesnted
-                  with a set of questions. Select an anser for eaach question
-                  and click the next button, you can click the previous button
-                  if you want to make changes. After you are satisfied, click
-                  the submit button. Thats,all! We would tell you your
-                  personality
+                  Hi there, you are not logged in yet. We want to give you a
+                  nice experience, Kindly hit the login button to login in and
+                  continue with the test. You can also sign up if you do not
+                  have an account with us. Cheers
                 </p>
               </div>
             </div>
           </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <router-link to="/login">
+            <button
+              type="button"
+              class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+            >
+              Login
+            </button>
+          </router-link>
           <button
             type="button"
-            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-black text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
             @click.prevent="closeModal = !closeModal"
           >
-            Ok, Got it !
+            Cancel
           </button>
         </div>
       </div>
@@ -65,7 +71,6 @@
 
 <script setup>
 import { ref } from "vue";
-
 
 let closeModal = ref(false);
 </script>
