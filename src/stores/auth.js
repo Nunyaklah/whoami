@@ -9,7 +9,9 @@ const baseUrl = `${import.meta.env.VITE_API_URL}`;
 export const useAuthStore = defineStore("authStore", {
   state: () => ({
     token: window.localStorage.getItem("token"),
-    loading: null
+    loading: null,
+    firstname: window.localStorage.getItem("firstname"),
+    lastname: window.localStorage.getItem("lastname")
   }),
   actions: {
     async login(email, password) {
@@ -19,6 +21,8 @@ export const useAuthStore = defineStore("authStore", {
           email,
           password,
         });
+        localStorage.setItem("firstname",  response.data.user.firstname)
+        localStorage.setItem("lastname", response.data.user.lastname)
         localStorage.setItem("token", response.data.accessToken);
         router.push("/");
         this.loading = false
@@ -50,6 +54,8 @@ export const useAuthStore = defineStore("authStore", {
     logout() {
       this.token = null;
       window.localStorage.removeItem("token");
+      window.localStorage.removeItem("firstname");
+      window.localStorage.removeItem("lastname");
     },
   },
   getters: {
