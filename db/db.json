@@ -6,6 +6,13 @@
       "firstname": "Nunya",
       "lastname": "Klah",
       "id": 1
+    },
+    {
+      "email": "kofi@mail.com",
+      "password": "$2a$10$EfSqHDp6L91X2y2Jm0IloeINMPi4VT/g5SCA/32gQlxYXdpl3gHna",
+      "firstname": "Kofi",
+      "lastname": "Kuma",
+      "id": 2
     }
   ],
   "questions": [

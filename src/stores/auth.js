@@ -32,7 +32,7 @@ export const useAuthStore = defineStore("authStore", {
     async signup(firstname, lastname, email, password) {
       this.loading = true
       try {
-        const response = await axios.post(`${baseUrl}/login`, {
+        const response = await axios.post(`${baseUrl}/signup`, {
           firstname,
           lastname,
           email,

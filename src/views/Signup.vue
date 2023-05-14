@@ -7,9 +7,13 @@
         to="/"
         class="flex items-center mb-6 text-2xl font-bold text-gray-900"
       >
-      <img class="w-16 h-16 mr-2" src="../assets/images/logo.png" alt="logo">
+        <img
+          class="w-16 h-16 mr-2"
+          src="../assets/images/logo.png"
+          alt="logo"
+        />
         Personality Test
-  </router-link>
+      </router-link>
       <div
         class="w-full bg-line-color rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0"
       >
@@ -19,21 +23,31 @@
           >
             Sign Up for your account
           </h1>
-          <form class="space-y-4 md:space-y-6" action="#">
+          <Form
+            @submit="signup"
+            :validation-schema="schema"
+            v-slot="{ errors }"
+            class="space-y-4 md:space-y-6"
+            action="#"
+          >
             <div>
               <label
                 for="firstname"
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >First Name</label
               >
-              <input
+              <Field
                 type="text"
                 name="firstname"
                 v-model="firstname"
                 id="firstname"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="Kofi"
+                :class="{ 'is-invalid': errors.firstname }"
               />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.firstname }}
+              </div>
             </div>
             <div>
               <label
@@ -41,14 +55,18 @@
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Last Name</label
               >
-              <input
+              <Field
                 type="text"
                 name="lastname"
                 v-model="lastname"
                 id="lastname"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="Wisdor"
+                :class="{ 'is-invalid': errors.lastname }"
               />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.lastname }}
+              </div>
             </div>
             <div>
               <label
@@ -56,14 +74,18 @@
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Your email</label
               >
-              <input
+              <Field
                 type="email"
                 name="email"
                 v-model="email"
                 id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="name@mail.com"
+                :class="{ 'is-invalid': errors.email }"
               />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.email }}
+              </div>
             </div>
             <div>
               <label
@@ -71,31 +93,55 @@
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Password</label
               >
-              <input
+              <Field
                 type="password"
                 name="password"
                 v-model="password"
                 id="password"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                :class="{ 'is-invalid': errors.password }"
               />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.password }}
+              </div>
+            </div>
+            <div>
+              <label
+                for="password"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Confirm Password</label
+              >
+              <Field
+                type="password"
+                name="cpassword"
+                v-model="cpassword"
+                id="cpassword"
+                placeholder="••••••••"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                :class="{ 'is-invalid': errors.cpassword }"
+              />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.cpassword }}
+              </div>
             </div>
 
             <button
               type="submit"
               class="w-full text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              @click.prevent="signup"
             >
-            <Spinner v-if="authStore.loading" />
+              <Spinner v-if="authStore.loading" />
               Sign up
             </button>
             <p class="text-sm font-semibold text-gray-700">
               Already have an account?
-              <router-link to="/login" class="font-medium text-gray-900 hover:underline"
+              <router-link
+                to="/login"
+                class="font-medium text-gray-900 hover:underline"
                 >Sign In</router-link
               >
             </p>
-          </form>
+          </Form>
         </div>
       </div>
     </div>
@@ -106,16 +152,36 @@
 import { ref } from "vue";
 import { useAuthStore } from "../stores/auth";
 import Spinner from "../components/Spinner.vue";
+import { Form, Field } from "vee-validate";
+import * as Yup from "yup";
 
 // create store
 const authStore = useAuthStore();
+
+const schema = Yup.object().shape({
+  firstname: Yup.string().required("First Name is required"),
+  lastname: Yup.string().required("Last name is required"),
+  email: Yup.string().required("Email is required").email("Email is invalid"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+  cpassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
+});
 
 let firstname = ref("");
 let lastname = ref("");
 let email = ref("");
 let password = ref("");
+let cpassword = ref("");
 
 function signup() {
-    authStore.signup(firstname.value,lastname.value,email.value,password.value)
+  authStore.signup(
+    firstname.value,
+    lastname.value,
+    email.value,
+    password.value
+  );
 }
 </script>
