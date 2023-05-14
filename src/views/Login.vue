@@ -24,21 +24,30 @@
           >
             Sign in to your account
           </h1>
-          <form class="space-y-4 md:space-y-6" action="#">
+          <Form
+            @submit="login"
+            :validation-schema="schema"
+            v-slot="{ errors }"
+            class="space-y-4 md:space-y-6"
+          >
             <div>
               <label
                 for="email"
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Your email</label
               >
-              <input
+              <Field
                 type="email"
                 name="email"
                 v-model="email"
                 id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-                placeholder="name@company.com"
+                placeholder="name@mail.com"
+                :class="{ 'is-invalid': errors.email }"
               />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.email }}
+              </div>
             </div>
             <div>
               <label
@@ -46,14 +55,18 @@
                 class="block mb-2 text-sm font-medium text-gray-900"
                 >Password</label
               >
-              <input
+              <Field
                 type="password"
                 name="password"
                 v-model="password"
                 id="password"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                :class="{ 'is-invalid': errors.password }"
               />
+              <div class="invalid-feedback text-xs text-red-700">
+                {{ errors.password }}
+              </div>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-start">
@@ -80,7 +93,6 @@
             <button
               type="submit"
               class="w-full text-white flex justify-center items-center bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              @click.prevent="login"
             >
               <Spinner v-if="authStore.loading" />
               Sign in
@@ -93,7 +105,7 @@
                 >Sign up</router-link
               >
             </p>
-          </form>
+          </Form>
         </div>
       </div>
     </div>
@@ -104,16 +116,23 @@
 import { ref } from "vue";
 import { useAuthStore } from "../stores/auth";
 import Spinner from "../components/Spinner.vue";
+import { Form, Field } from "vee-validate";
+import * as Yup from "yup";
 
 // create store
 const authStore = useAuthStore();
 
+const schema = Yup.object().shape({
+  email: Yup.string().required("Email is required").email("Email is invalid"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required")
+});
+
 let email = ref("");
 let password = ref("");
-
 
 async function login() {
   await authStore.login(email.value, password.value);
 }
-
 </script>

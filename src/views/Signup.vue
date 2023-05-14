@@ -28,7 +28,6 @@
             :validation-schema="schema"
             v-slot="{ errors }"
             class="space-y-4 md:space-y-6"
-            action="#"
           >
             <div>
               <label
