@@ -5,36 +5,38 @@ import { useAlertStore } from "./alerts";
 
 const baseUrl = `${import.meta.env.VITE_API_URL}`;
 
-
 export const useAuthStore = defineStore("authStore", {
   state: () => ({
     token: window.localStorage.getItem("token"),
     loading: null,
     firstname: window.localStorage.getItem("firstname"),
-    lastname: window.localStorage.getItem("lastname")
+    lastname: window.localStorage.getItem("lastname"),
   }),
   actions: {
     async login(email, password) {
-      this.loading = true
+      this.loading = true;
       try {
         const response = await axios.post(`${baseUrl}/login`, {
           email,
           password,
         });
-        localStorage.setItem("firstname",  response.data.user.firstname)
-        localStorage.setItem("lastname", response.data.user.lastname)
+        this.token = response.data.accessToken;
+        this.firstname = response.data.user.firstname;
+        this.lastname = response.data.user.lastname;
+        localStorage.setItem("firstname", response.data.user.firstname);
+        localStorage.setItem("lastname", response.data.user.lastname);
         localStorage.setItem("token", response.data.accessToken);
         router.push("/");
-        this.loading = false
+        this.loading = false;
       } catch (error) {
         const alertStore = useAlertStore();
         alertStore.error(error.response.data);
-        this.loading = false
+        this.loading = false;
       }
     },
 
     async signup(firstname, lastname, email, password) {
-      this.loading = true
+      this.loading = true;
       try {
         const response = await axios.post(`${baseUrl}/signup`, {
           firstname,
@@ -44,11 +46,11 @@ export const useAuthStore = defineStore("authStore", {
         });
         console.log(response);
         router.push("/login");
-        this.loading = false
+        this.loading = false;
       } catch (error) {
         const alertStore = useAlertStore();
         alertStore.error(error.response.data);
-        this.loading = false
+        this.loading = false;
       }
     },
     logout() {

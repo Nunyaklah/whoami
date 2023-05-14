@@ -19,7 +19,7 @@
         <p
           class="self-center text-2xl font-semibold whitespace-nowrap mr-14 italic"
         >
-          Welcome, {{ authStore.firstname + " "+ authStore.lastname }}
+          Welcome, {{ authStore.firstname + " " + authStore.lastname }}
         </p>
         <button
           type="button"
@@ -44,13 +44,17 @@
 
 <script setup>
 import { useAuthStore } from "../stores/auth";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import router from "../router/index";
 
 // create store
 const authStore = useAuthStore();
 
-let loginStatus = ref(authStore.isLoggedIn);
+const loginStatus = computed(() => {
+  return authStore.isLoggedIn
+});
+
+// let loginStatus = ref(authStore.isLoggedIn);
 
 function logout() {
   authStore.logout();
