@@ -66,9 +66,10 @@
 
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
-            @click.prevent="questionsStore.calculatePoints()"
+            @click.prevent="questionsStore.submit()"
             v-if="index == 4"
           >
+          <Spinner v-if="loading" />
             Submit
           </button>
         </div>
@@ -81,6 +82,7 @@
 import { storeToRefs } from "pinia";
 import { usePersonalityStore } from "../stores/personality";
 import Navbar from "../components/Navbar.vue";
+import Spinner from "../components/Spinner.vue";
 
 // create store
 const questionsStore = usePersonalityStore();

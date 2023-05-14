@@ -1,37 +1,38 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import router from "../router/index";
+import { useAlertStore } from "./alerts";
+const baseUrl = `${import.meta.env.VITE_API_URL}`;
 
 export const usePersonalityStore = defineStore("personalityStore", {
   state: () => ({
-    baseUrl: "http://localhost:3000",
     index: 0,
     question: "",
     questions: [],
     pointsArray: [0, 0, 0, 0, 0],
     totalPoints: 0,
     selected: false,
-    loading: false,
+    loading: null,
     fullPage: true,
   }),
   actions: {
+    submit() {
+      this.loading = true;
+      setTimeout(() => {
+        this.calculatePoints();
+      }, 4000);
+    },
+
     //fetch all questions from the api
-    getQuestions() {
-      return new Promise((resovle, reject) => {
-        axios({
-          url: `${this.baseUrl}/questions`,
-          method: "GET",
-        })
-          .then((resp) => {
-            this.questions = resp.data;
-            this.question = this.questions[this.index];
-            resovle(resp);
-          })
-          .catch((err) => {
-            console.log(err);
-            reject(err);
-          });
-      });
+    async getQuestions() {
+      try {
+        const response = await axios.get(`${baseUrl}/questions`);
+        this.questions = response.data;
+        this.question = this.questions[this.index];
+      } catch (error) {
+        const alertStore = useAlertStore();
+        alertStore.error(error.response.data);
+      }
     },
 
     // cycles through the questions based on index position
@@ -75,7 +76,8 @@ export const usePersonalityStore = defineStore("personalityStore", {
       ) {
         return previousValue + currentValue;
       });
-      router.push("/results")
+      this.loading = false;
+      router.push("/results");
     },
   },
 });

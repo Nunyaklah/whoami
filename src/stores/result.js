@@ -1,34 +1,26 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { usePersonalityStore } from "../stores/personality";
+import { useAlertStore } from "./alerts";
+const baseUrl = `${import.meta.env.VITE_API_URL}`;
 
 export const useResultStore = defineStore("resultStore", {
   state: () => ({
-    baseUrl: "http://localhost:3000",
     results: [],
     result: "",
     loading: false,
   }),
   actions: {
     // function to get details based on results
-    getResults() {
-      return new Promise((resovle, reject) => {
-        axios({
-          url: `${this.baseUrl}/results`,
-          method: "GET",
-        })
-          .then((resp) => {
-            this.results = resp.data;
-            this.finalResults();
-
-            resovle(resp);
-          })
-          .catch((err) => {
-            console.log(err);
-
-            reject(err);
-          });
-      });
+    async getResults() {
+      try {
+        const response = await axios.get(`${baseUrl}/results`);
+        this.results = response.data;
+        this.finalResults();
+      } catch (error) {
+        const alertStore = useAlertStore();
+        alertStore.error(error.response.data);
+      }
     },
     // function to tell if someone is an introvert or an extrovert
     finalResults() {

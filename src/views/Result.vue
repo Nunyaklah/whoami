@@ -17,7 +17,7 @@
         :quoteAuthor="quoteAuthor"
         :quoterPosition="quoterPosition"
       />
-      <ConfettiExplosion :particleCount="1000" :duration="4000"/>
+      <ConfettiExplosion :particleCount="600" :duration="4000"/>
       <div class="w-full xl:w-1/2 p-10 text-center">
         <h1
           class="text-5xl font-bold italic leading-10 text-gray-800 mb-8 text-center md:mt-0 mt-4"
