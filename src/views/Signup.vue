@@ -86,6 +86,7 @@
               class="w-full text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               @click.prevent="signup"
             >
+            <Spinner v-if="authStore.loading" />
               Sign up
             </button>
             <p class="text-sm font-semibold text-gray-700">
@@ -104,6 +105,7 @@
 <script setup>
 import { ref } from "vue";
 import { useAuthStore } from "../stores/auth";
+import Spinner from "../components/Spinner.vue";
 
 // create store
 const authStore = useAuthStore();

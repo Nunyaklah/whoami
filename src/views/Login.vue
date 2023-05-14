@@ -1,4 +1,5 @@
 <template>
+  <Alert />
   <section class="bg-background-color">
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
@@ -7,7 +8,11 @@
         to="/"
         class="flex items-center mb-6 text-2xl font-bold text-gray-900"
       >
-      <img class="w-16 h-16 mr-2" src="../assets/images/logo.png" alt="logo">
+        <img
+          class="w-16 h-16 mr-2"
+          src="../assets/images/logo.png"
+          alt="logo"
+        />
         Personality Test
       </router-link>
       <div
@@ -74,14 +79,17 @@
             </div>
             <button
               type="submit"
-              class="w-full text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                @click.prevent="login"
-              >
+              class="w-full text-white flex justify-center items-center bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              @click.prevent="login"
+            >
+              <Spinner v-if="authStore.loading" />
               Sign in
             </button>
             <p class="text-sm font-semibold text-gray-700">
               Dont have an account yet?
-              <router-link to="/signup" class="font-medium text-gray-900 hover:underline"
+              <router-link
+                to="/signup"
+                class="font-medium text-gray-900 hover:underline"
                 >Sign up</router-link
               >
             </p>
@@ -93,8 +101,9 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useAuthStore } from "../stores/auth";
+import Spinner from "../components/Spinner.vue";
 
 // create store
 const authStore = useAuthStore();
@@ -102,11 +111,9 @@ const authStore = useAuthStore();
 let email = ref("");
 let password = ref("");
 
-function login(){
-    authStore.login(email.value, password.value)
+
+async function login() {
+  await authStore.login(email.value, password.value);
 }
-
-
-
 
 </script>

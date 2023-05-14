@@ -1,45 +1,54 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import router from "../router/index";
+import { useAlertStore } from "./alerts";
+
+const baseUrl = `${import.meta.env.VITE_API_URL}`;
+
 
 export const useAuthStore = defineStore("authStore", {
   state: () => ({
-    baseUrl: "http://localhost:3000",
     token: window.localStorage.getItem("token"),
+    loading: null
   }),
   actions: {
-    login(email, password) {
-      axios
-        .post(`${this.baseUrl}/login`, {
+    async login(email, password) {
+      this.loading = true
+      try {
+        const response = await axios.post(`${baseUrl}/login`, {
           email,
           password,
-        })
-        .then(function (response) {
-          localStorage.setItem("token", response.data.accessToken);
-          router.push("/");
-        })
-        .catch(function (error) {
-          console.log(error);
         });
+        localStorage.setItem("token", response.data.accessToken);
+        router.push("/");
+        this.loading = false
+      } catch (error) {
+        const alertStore = useAlertStore();
+        alertStore.error(error.response.data);
+        this.loading = false
+      }
     },
-    signup(firstname, lastname, email, password) {
-      axios
-        .post(`${this.baseUrl}/signup`, {
+
+    async signup(firstname, lastname, email, password) {
+      this.loading = true
+      try {
+        const response = await axios.post(`${baseUrl}/login`, {
           firstname,
           lastname,
           email,
           password,
-        })
-        .then(function (response) {
-          console.log(response);
-          router.push("/login");
-        })
-        .catch(function (error) {
-          console.log(error);
         });
+        console.log(response);
+        router.push("/login");
+        this.loading = false
+      } catch (error) {
+        const alertStore = useAlertStore();
+        alertStore.error(error.response.data);
+        this.loading = false
+      }
     },
     logout() {
-      this.token = null
+      this.token = null;
       window.localStorage.removeItem("token");
     },
   },
