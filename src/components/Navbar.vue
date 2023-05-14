@@ -10,7 +10,7 @@
           alt="logo"
         />
         <span
-          class="self-center text-2xl font-semibold whitespace-nowrap text-white"
+          class="self-center text-2xl font-bold whitespace-nowrap text-black"
           >Personality Test</span
         >
       </router-link>
