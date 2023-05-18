@@ -13,6 +13,13 @@
       "firstname": "Kofi",
       "lastname": "Kuma",
       "id": 2
+    },
+    {
+      "email": "isicheiphelim@gmail.com",
+      "password": "$2a$10$dTqbJ7NMELqaAF8kVPttOuRbsdnihkYUUAqGxuL.TspdKMAeFYL1q",
+      "firstname": "ISICHEI",
+      "lastname": "PHELIM",
+      "id": 3
     }
   ],
   "questions": [

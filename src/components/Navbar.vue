@@ -18,6 +18,7 @@
       <div class="flex md:order-2">
         <p
           class="self-center text-2xl font-semibold whitespace-nowrap mr-14 italic"
+          v-if="loginStatus"
         >
           Welcome, {{ authStore.firstname + " " + authStore.lastname }}
         </p>
