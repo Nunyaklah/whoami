@@ -20,6 +20,7 @@ import './commands'
 // require('./commands')
 
 import { mount } from 'cypress/vue'
+import "../../src/index.css"
 
 Cypress.Commands.add('mount', mount)
 
