@@ -25,6 +25,7 @@
         <button
           type="button"
           class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-900 font-medium rounded-lg text-sm px-10 py-4 text-center mr-3 md:mr-0"
+          data-cy="logout-btn"
           @click.prevent="logout"
           v-if="loginStatus"
         >
@@ -33,6 +34,7 @@
         <button
           type="button"
           class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-900 font-medium rounded-lg text-sm px-10 py-4 text-center mr-3 md:mr-0"
+          data-cy="login-btn"
           @click.prevent="login"
           v-else
         >

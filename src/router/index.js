@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import { useAuthStore } from "../stores/auth";
 
 const router = createRouter({
@@ -8,7 +7,7 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: Home,
+      component: () => import("../views/Home.vue")
     },
     {
       path: "/personality",
@@ -34,10 +33,12 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to) => {
+  const authStore = useAuthStore();
+  
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ["/login", "/signup", "/"];
   const authRequired = !publicPages.includes(to.path);
-  const authStore = useAuthStore();
+  
 
   if (authRequired && !authStore.token) {
     return "/login";

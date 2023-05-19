@@ -40,6 +40,7 @@
                 name="firstname"
                 v-model="firstname"
                 id="firstname"
+                data-cy="firstname"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="Kofi"
                 :class="{ 'is-invalid': errors.firstname }"
@@ -59,6 +60,7 @@
                 name="lastname"
                 v-model="lastname"
                 id="lastname"
+                data-cy="lastname"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="Wisdor"
                 :class="{ 'is-invalid': errors.lastname }"
@@ -78,6 +80,7 @@
                 name="email"
                 v-model="email"
                 id="email"
+                data-cy="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="name@mail.com"
                 :class="{ 'is-invalid': errors.email }"
@@ -97,6 +100,7 @@
                 name="password"
                 v-model="password"
                 id="password"
+                data-cy="password"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 :class="{ 'is-invalid': errors.password }"
@@ -113,20 +117,22 @@
               >
               <Field
                 type="password"
-                name="cpassword"
-                v-model="cpassword"
-                id="cpassword"
+                name="confirmPassword"
+                v-model="confirmPassword"
+                id="confirmPassword"
+                data-cy="confirmPassword"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-                :class="{ 'is-invalid': errors.cpassword }"
+                :class="{ 'is-invalid': errors.confirmPassword }"
               />
               <div class="invalid-feedback text-xs text-red-700">
-                {{ errors.cpassword }}
+                {{ errors.confirmPassword }}
               </div>
             </div>
 
             <button
               type="submit"
+              data-cy="submit"
               class="w-full text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
               <Spinner v-if="authStore.loading" />
@@ -135,6 +141,7 @@
             <p class="text-sm font-semibold text-gray-700">
               Already have an account?
               <router-link
+               data-cy="login"
                 to="/login"
                 class="font-medium text-gray-900 hover:underline"
                 >Sign In</router-link
@@ -164,7 +171,7 @@ const schema = Yup.object().shape({
   password: Yup.string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
-  cpassword: Yup.string()
+  confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is required"),
 });
@@ -173,7 +180,7 @@ let firstname = ref("");
 let lastname = ref("");
 let email = ref("");
 let password = ref("");
-let cpassword = ref("");
+let confirmPassword = ref("");
 
 function signup() {
   authStore.signup(

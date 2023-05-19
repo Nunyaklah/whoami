@@ -37,6 +37,7 @@
           <router-link to="/">
             <button
               class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+              data-cy="home-btn"
             >
               Go to Home
             </button>
@@ -51,9 +52,9 @@
 </template>
 
 <script setup>
+import { useResultStore } from "../stores/result";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import { useResultStore } from "../stores/result";
 import Quote from "../components/Quote.vue";
 import ConfettiExplosion from "vue-confetti-explosion";
 

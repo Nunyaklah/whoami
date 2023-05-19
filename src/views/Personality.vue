@@ -35,11 +35,11 @@
                     'text-white': answer.selected,
                   }"
                 >
-                  <p>{{ answer.option }}</p>
+                  <p data-cy="answer-option">{{ answer.option }}</p>
                 </div>
               </div>
 
-              <div class="pl-5">
+              <div class="pl-5" data-cy="answer-select">
                 <p class="font-medium text-gray-700 mr-2">
                   {{ answer.answer }}
                 </p>
@@ -51,6 +51,7 @@
         <div class="mt-8">
           <button
             class="bg-gray-200 text-black font-semibold py-4 px-10 rounded mb-3"
+            data-cy="previous-btn"
             @click.prevent="questionsStore.decreaseIndex()"
           >
             Previous
@@ -58,6 +59,7 @@
 
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+            data-cy="next-btn"
             @click.prevent="questionsStore.increaseIndex()"
             v-if="index != 4"
           >
@@ -66,6 +68,7 @@
 
           <button
             class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+            data-cy="submit-btn"
             @click.prevent="questionsStore.submit()"
             v-if="index == 4"
           >
@@ -79,8 +82,8 @@
 </template>
 
 <script setup>
-import { storeToRefs } from "pinia";
 import { usePersonalityStore } from "../stores/personality";
+import { storeToRefs } from "pinia";
 import Navbar from "../components/Navbar.vue";
 import Spinner from "../components/Spinner.vue";
 

@@ -41,6 +41,7 @@
                 name="email"
                 v-model="email"
                 id="email"
+                data-cy="email-login"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="name@mail.com"
                 :class="{ 'is-invalid': errors.email }"
@@ -60,6 +61,7 @@
                 name="password"
                 v-model="password"
                 id="password"
+                data-cy="password-login"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 :class="{ 'is-invalid': errors.password }"
@@ -92,6 +94,7 @@
             </div>
             <button
               type="submit"
+              data-cy="submit"
               class="w-full text-white flex justify-center items-center bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
               <Spinner v-if="authStore.loading" />
@@ -100,6 +103,7 @@
             <p class="text-sm font-semibold text-gray-700">
               Dont have an account yet?
               <router-link
+               data-cy="signup"
                 to="/signup"
                 class="font-medium text-gray-900 hover:underline"
                 >Sign up</router-link

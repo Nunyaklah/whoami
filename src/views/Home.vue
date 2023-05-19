@@ -16,15 +16,16 @@
         </div>
 
         <div class="text-center md:text-left lg:text-left">
-          <p class="mt-6 w-full md:w-7/12 lg:w-7/12">
+          <p class="mt-6 w-full md:w-7/12 lg:w-7/12" data-cy="page-description">
             We all have a personality trait, use this application to find out
             where you fit. This can help you in your relationships, career and
-            your entire life
+            your entire life.
           </p>
         </div>
         <div class="mt-8 text-center md:text-left lg:text-left">
           <button
             class="bg-white text-black font-semibold py-4 px-10 rounded mb-4"
+            data-cy="modal-btn"
             @click="showModal()"
           >
             How it Works
@@ -32,6 +33,7 @@
           
             <button
               class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+              data-cy="start-btn"
               @click="checkLoginStatus"
             >
               Start Personality Test !
@@ -58,7 +60,7 @@
   </div>
 </template>
 
-<script setup>
+<script  setup>
 import Modal from "../components/Modal.vue";
 import AuthModal from "../components/AuthModal.vue";
 import Navbar from "../components/Navbar.vue"
