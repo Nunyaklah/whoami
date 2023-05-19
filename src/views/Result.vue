@@ -22,22 +22,22 @@
         <h1
           class="text-5xl font-bold italic leading-10 text-gray-800 mb-8 text-center md:mt-0 mt-4"
         >
-          {{ result[0].personality }}
+          {{ personality }}
         </h1>
 
         <p
           class="mb-3 text-gray-500  first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900  first-letter:mr-3 first-letter:float-left"
         >
-        {{ result[0].personalityDetails }}
+        {{ personalityDetails }}
         </p>
         
 
         
         <div class="mt-12 m-auto text-center">
-          <router-link to="/">
+          <router-link to="/" data-cy="home-btn">
             <button
               class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
-              data-cy="home-btn"
+              
             >
               Go to Home
             </button>
@@ -54,7 +54,7 @@
 <script setup>
 import { useResultStore } from "../stores/result";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import Quote from "../components/Quote.vue";
 import ConfettiExplosion from "vue-confetti-explosion";
 
@@ -63,11 +63,14 @@ import ConfettiExplosion from "vue-confetti-explosion";
 // create store
 const resultStore = useResultStore();
 
-// creating store refs
-const { result } = storeToRefs(resultStore);
-
 //fetch results from results store
 resultStore.getResults();
+
+// creating store refs
+const { personality, personalityDetails } = storeToRefs(resultStore);
+
+
+
 
 const quote =
   "Personality is more important than beauty, but imagination is more than both of them.";
