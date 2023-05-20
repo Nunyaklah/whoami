@@ -9,7 +9,7 @@ export const usePersonalityStore = defineStore("personalityStore", {
     index: 0,
     question: "",
     questions: [],
-    pointsArray: [0, 0, 0, 0, 0],
+    pointsArray: [0,0,0,0],
     totalPoints: 0,
     selected: false,
     loading: null,
@@ -29,6 +29,7 @@ export const usePersonalityStore = defineStore("personalityStore", {
         const response = await axios.get(`${baseUrl}/questions`);
         this.questions = response.data;
         this.question = this.questions[this.index];
+        this.pointsArray = new Array(this.questions.length).fill(0)
       } catch (error) {
         const alertStore = useAlertStore();
         alertStore.error(error.response.data);
@@ -42,7 +43,8 @@ export const usePersonalityStore = defineStore("personalityStore", {
 
     // increases index and calls dynamic question
     increaseIndex() {
-      if (this.index < 4) {
+      if (this.index < this.questions.length) {
+        console.log(this.questions.length)
         this.index += 1;
       }
       this.dynamicQuestions();

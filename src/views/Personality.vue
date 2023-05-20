@@ -93,6 +93,7 @@ const questionsStore = usePersonalityStore();
 // creating store refs
 const { question, index, loading, fullPage } = storeToRefs(questionsStore);
 
+
 //fetch the questions from api
 questionsStore.getQuestions();
 </script>
