@@ -17,6 +17,11 @@ The application is tested end to end with Cypress
 
 This test basically runs from sign up, login to taking a personaly test. Below is are the test results.
 
+<img width="1133" alt="Screenshot 2023-05-20 at 3 41 15 PM" src="https://github.com/Nunyaklah/whoami/assets/20068694/92751c62-2f2f-4039-8600-1229d1087f54">
+
+https://github.com/Nunyaklah/whoami/assets/20068694/691df6a5-07c9-4fd8-a25e-2980cb716227
+
+
 
 ## Recommended IDE Setup
 
