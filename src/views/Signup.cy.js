@@ -5,6 +5,7 @@ beforeEach(() => {
   setActivePinia(createPinia());
 });
 
+// this is here because cypress does not hit the signup endpoint so it gets undefined for response.data
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 })
