@@ -1,10 +1,13 @@
 describe('template spec', () => {
+  
   it('passes', () => {
+    
     cy.visit('http://localhost:5173/')
   })
 
 
   it('end to end sign up to get personality', function() {
+    cy.viewport(1280,800)
     cy.visit('http://localhost:5173/');
     cy.get('[data-cy="modal-btn"').click()
     cy.get('[data-cy="cancel-modal-btn"').click()
