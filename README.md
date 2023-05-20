@@ -1,6 +1,22 @@
 # Personality Test
 
-This template should help get you started developing with Vue 3 in Vite.
+This is an application that tells you your personality after you have annswered a few questions. Personality is either an Introvert or an Extrovert. There are just five questions for now just to represent a POC, a future addition is an admin dashboard that enables users to signup/login and add questions and mappings to define a personality. Current functionality includes, sign up, login, a landing page, personality test page with questions, results page and logout functionality. 
+
+The application is tested end to end with Cypress
+
+## Languages
+
+- VueJs 3
+- Pinia
+- Vue Router
+- Tailwind CSS
+- Axios
+- Cypress
+
+## E2E Testing
+
+This test basically runs from sign up, login to taking a personaly test. Below is are the test results.
+
 
 ## Recommended IDE Setup
 
@@ -26,12 +42,6 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
 ```
 
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
