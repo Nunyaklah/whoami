@@ -21,6 +21,19 @@ This test basically runs from sign up, login to taking a personaly test. Below i
 
 https://github.com/Nunyaklah/whoami/assets/20068694/691df6a5-07c9-4fd8-a25e-2980cb716227
 
+## Component Testing
+
+Cypress has a feture for testing individual components in an application, making it close to unit testing. You test components making sure they behave as expected. I wrote tests for the login and sign up components. Tests to check validity of input data, valid emails, valid passwords etc. 
+Below are the results:
+
+![Screenshot 2023-05-20 at 5 09 01 PM](https://github.com/Nunyaklah/whoami/assets/20068694/f219db63-ea89-4b7f-a447-1b89902f808c)
+![Screenshot 2023-05-20 at 5 08 42 PM](https://github.com/Nunyaklah/whoami/assets/20068694/43c8f9bd-68f0-436e-9c5d-5d1757bd92be)
+![Screenshot 2023-05-20 at 5 09 12 PM](https://github.com/Nunyaklah/whoami/assets/20068694/9d80279c-2ef0-46b8-be04-c9b61ffbdc23)
+
+
+https://github.com/Nunyaklah/whoami/assets/20068694/bda275a2-20d3-4e90-aed3-905b50318d90
+
+https://github.com/Nunyaklah/whoami/assets/20068694/ff398f6d-18ae-4173-ae43-949eef8b9912
 
 
 ## Recommended IDE Setup
