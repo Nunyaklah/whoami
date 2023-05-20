@@ -9,7 +9,7 @@ export const usePersonalityStore = defineStore("personalityStore", {
     index: 0,
     question: "",
     questions: [],
-    pointsArray: [0,0,0,0],
+    pointsArray: [],
     totalPoints: 0,
     selected: false,
     loading: null,
@@ -20,7 +20,7 @@ export const usePersonalityStore = defineStore("personalityStore", {
       this.loading = true;
       setTimeout(() => {
         this.calculatePoints();
-      }, 4000);
+      }, 2000);
     },
 
     //fetch all questions from the api

@@ -34,9 +34,9 @@
 
         
         <div class="mt-12 m-auto text-center">
-          <router-link to="/" data-cy="home-btn">
+          <router-link to="/" >
             <button
-              class="bg-black text-white font-semibold py-4 px-10 rounded ml-4"
+              class="bg-black text-white font-semibold py-4 px-10 rounded ml-4" data-cy="home-btn"
               
             >
               Go to Home
