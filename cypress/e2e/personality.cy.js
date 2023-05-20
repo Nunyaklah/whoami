@@ -6,7 +6,7 @@ describe('template spec', () => {
   })
 
 
-  it('end to end sign up to get personality', function() {
+  it('end to end test', function() {
     cy.viewport(1280,800)
     cy.visit('http://localhost:5173/');
     cy.get('[data-cy="modal-btn"').click()
