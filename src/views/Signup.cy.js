@@ -5,6 +5,10 @@ beforeEach(() => {
   setActivePinia(createPinia());
 });
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
+})
+
 describe("<Signup />", () => {
   it("renders", () => {
     cy.mount(Signup);

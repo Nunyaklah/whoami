@@ -15,6 +15,7 @@ export const useAuthStore = defineStore("authStore", {
   actions: {
     async login(email, password) {
       this.loading = true;
+      const alertStore = useAlertStore();
       try {
         const response = await axios.post(`${baseUrl}/login`, {
           email,
@@ -27,9 +28,9 @@ export const useAuthStore = defineStore("authStore", {
         localStorage.setItem("lastname", response.data.user.lastname);
         localStorage.setItem("token", response.data.accessToken);
         router.push("/");
+        alertStore.success("Logged in successfully");
         this.loading = false;
       } catch (error) {
-        const alertStore = useAlertStore();
         alertStore.error(error.response.data);
         this.loading = false;
       }
@@ -37,6 +38,7 @@ export const useAuthStore = defineStore("authStore", {
 
     async signup(firstname, lastname, email, password) {
       this.loading = true;
+      const alertStore = useAlertStore();
       try {
         const response = await axios.post(`${baseUrl}/signup`, {
           firstname,
@@ -46,9 +48,9 @@ export const useAuthStore = defineStore("authStore", {
         });
         console.log(response);
         router.push("/login");
+        alertStore.success("Registered successfully");
         this.loading = false;
       } catch (error) {
-        const alertStore = useAlertStore();
         alertStore.error(error.response.data);
         this.loading = false;
       }

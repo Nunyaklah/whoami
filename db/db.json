@@ -34,6 +34,13 @@
       "firstname": "Kwame",
       "lastname": "Mills",
       "id": 5
+    },
+    {
+      "email": "walas@mail.com",
+      "password": "$2a$10$VmvYy3o1IscHGc23uEW2bOrqE6uW/Ger3h0RUFS2HG8.zOgUwOhvS",
+      "firstname": "Walas",
+      "lastname": "Kojo",
+      "id": 6
     }
   ],
   "questions": [
